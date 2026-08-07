@@ -25,8 +25,27 @@ Acuity → **Availability / Appointment Types → New Type of Service**. Make th
 | Semi-Private Lesson | 1h 30m | $98   | price is per surfer (2 total)  |
 | Group Lesson      | 1h 30m   | $80   | price per person, 3+ clients   |
 
-(For Semi-Private/Group you can allow multiple clients per booking, or keep it
-simple and have each surfer book their own spot — your call.)
+### 3a. Set up the Group Lesson as a group class (per-person price + quantity)
+A normal appointment type has no "number of people" selector. To let clients
+pick 3+ surfers at $80 each, the Group Lesson must be a **group class**:
+
+1. Acuity → **Appointment Types → + New Type of Service** (or edit Group Lesson).
+2. Choose the option that makes it a **class / group** ("multiple clients can book
+   the same time"). Set: Name = Group Lesson · Duration = 1h 30m · **Price = $80
+   (per person)**.
+3. Set **minimum group size = 3** and a **maximum** (e.g., 6). Acuity enforces the
+   minimum, so nobody can book a group of 1–2.
+4. Turn on the quantity selector: **Scheduling Page settings → check "Classes:
+   Allow clients to book multiple spots."** This adds the +/– (Quantity) so one
+   person can book 3, 4, 5… surfers and it charges $80 each ($240 for 3, $320 for
+   4, and so on).
+5. Add the **class times** you want to offer groups (classes appear at set times,
+   and the page shows how many spots are left).
+
+Note: classes are open-enrollment by default — another party could join the same
+class time up to your maximum. If you'd rather each group booking be private to one
+party, use a regular appointment at a $240 base + an "$80 extra surfer" add-on
+instead.
 
 ### 4. Set your availability
 Acuity → **Availability** → set the weekly hours/days you actually coach.
