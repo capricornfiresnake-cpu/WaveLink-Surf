@@ -1,0 +1,56 @@
+# Connecting Acuity Scheduling (calendar + payments)
+
+Goal: real-time booking that **prevents double-booking**, with payment taken
+through your Stripe account. With one instructor (Ari), Acuity will only offer
+times that are actually free — so two people can never grab the same slot.
+
+## Order of operations
+Do these in order; each unlocks the next.
+
+### 1. Activate Stripe (now possible — the site is live)
+- Log in at https://dashboard.stripe.com
+- Finish "Activate payments": business info + connect your bank for payouts.
+- When it asks for a **business website**, use your live URL
+  (e.g. `https://wave-link-surf.vercel.app`).
+
+### 2. Create your Acuity account
+- Go to https://acuityscheduling.com and start the free trial.
+- To accept payments you'll need a paid plan (~$20/mo, the "Emerging" plan).
+
+### 3. Create your 3 appointment types
+Acuity → **Availability / Appointment Types → New Type of Service**. Make three:
+| Name              | Duration | Price | Notes                          |
+|-------------------|----------|-------|--------------------------------|
+| Private Lesson    | 1h 30m   | $125  | 1 client                       |
+| Semi-Private Lesson | 1h 30m | $98   | price is per surfer (2 total)  |
+| Group Lesson      | 1h 30m   | $80   | price per person, 3+ clients   |
+
+(For Semi-Private/Group you can allow multiple clients per booking, or keep it
+simple and have each surfer book their own spot — your call.)
+
+### 4. Set your availability
+Acuity → **Availability** → set the weekly hours/days you actually coach.
+Acuity blocks out anything already booked automatically.
+
+### 5. Connect Stripe to Acuity
+Acuity → **Settings → Payments → Connect** → choose **Stripe** → log in / authorize.
+Then set each appointment type to **require full payment at the time of booking**
+(or a deposit, if you prefer).
+
+### 6. Send me two things and I'll wire it into the site
+1. Your Acuity **scheduling page link** — Acuity → **Client's Scheduling Page**,
+   it looks like `https://app.acuityscheduling.com/schedule.php?owner=XXXXXXX`
+2. (Optional) the **appointment type IDs** if you want each "Book Now" button to
+   jump straight to that specific lesson. In Acuity, open an appointment type and
+   copy the number in its "Direct scheduling link."
+
+## What I'll do once you send those
+- Embed Acuity's live booking calendar into the **Book Online** page (keeping your
+  three lesson cards — each "Book Now" opens Acuity to that lesson).
+- Retire the old custom cart / checkout / request-email flow (Acuity replaces it).
+- Commit + push so it goes live on the same URL.
+
+## Result
+Clients pick a real, available time → pay by card (via your Stripe) → the slot is
+instantly reserved so no one else can take it → you get a booking notification and
+it lands on your Acuity calendar (which can sync to your phone/Google Calendar).
