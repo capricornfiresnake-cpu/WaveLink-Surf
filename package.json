@@ -1,0 +1,9 @@
+{
+  "name": "wavelink-surf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wavelink Surf — website with Stripe Checkout",
+  "dependencies": {
+    "stripe": "^17.7.0"
+  }
+}

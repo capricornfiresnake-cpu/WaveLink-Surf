@@ -1,0 +1,14 @@
+node_modules
+.env
+.env.local
+.vercel
+
+# Local dev preview config (not needed in production)
+.claude/
+
+# Original source media — the optimized versions the site uses live in assets/
+/*.mp4
+/IMG_*.JPG
+/IMG_*.jpg
+/Meet Ari.jpg
+/New/
