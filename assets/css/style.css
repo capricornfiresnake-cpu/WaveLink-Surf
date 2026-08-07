@@ -613,6 +613,14 @@ body.header-solid .site-header .icon-btn{color:var(--ink)}
   .reveal-line{transform:none}
 }
 
+/* =====================================================================
+   ACUITY EMBED  (Book Online scheduler)  +  retire the custom cart UI
+   ===================================================================== */
+.acuity-embed{background:var(--paper);border:1px solid var(--line)}
+.acuity-embed iframe{display:block;width:100%;min-height:820px;border:0}
+/* Booking + payment now handled by Acuity; hide the old cart icon & drawer */
+.icon-btn[data-cart-open],.drawer{display:none!important}
+
 /* focus */
 :focus-visible{outline:2px solid var(--sea);outline-offset:3px}
 .btn:focus-visible,.slot:focus-visible,.cal-day:focus-visible{outline-offset:2px}
