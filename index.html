@@ -140,7 +140,7 @@
           <p class="lesson__meta">Minimum 3 surfers · 1 coach per 2 surfers</p>
           <p class="lesson__price"><b>$80</b> <span>per person</span></p>
           <p class="lesson__blurb">Family and friends together in the water, with a low coach-to-surfer ratio throughout.</p>
-          <div class="lesson__foot"><button type="button" class="btn btn--ghost btn--block" data-acuity="https://app.acuityscheduling.com/schedule.php?owner=40083208&amp;appointmentType=category:Group%20Lesson">Book Now</button></div>
+          <div class="lesson__foot"><button type="button" class="btn btn--ghost btn--block" data-group-book>Book Now</button></div>
         </div>
       </article>
     </div>
@@ -294,7 +294,63 @@
   </div>
 </div>
 
+<!-- GROUP BOOKING MODAL (custom request flow — group lessons only) -->
+<div class="modal" id="group-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Book a group lesson">
+  <div class="modal__scrim" data-g-close></div>
+  <div class="modal__panel">
+    <div class="modal__head">
+      <h3>Group Lesson — request a booking</h3>
+      <button class="modal__close" data-g-close aria-label="Close">&times;</button>
+    </div>
+    <div class="modal__body">
+      <div data-g-form>
+        <div class="booking-grid">
+          <div>
+            <span class="field-label">Choose a date</span>
+            <div class="cal-head">
+              <button class="cal-nav" data-gcal-prev aria-label="Previous month">&lsaquo;</button>
+              <span class="m" data-gcal-month>Month</span>
+              <button class="cal-nav" data-gcal-next aria-label="Next month">&rsaquo;</button>
+            </div>
+            <div class="cal-dow"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
+            <div class="cal-grid" data-gcal-grid></div>
+            <span class="field-label" style="margin-top:1.6rem">Choose a time</span>
+            <div class="slots" data-gslots></div>
+            <span class="field-label" style="margin-top:1.6rem">Number of surfers</span>
+            <div class="stepper">
+              <button data-gdec aria-label="Fewer surfers">&minus;</button>
+              <span class="n" data-gnum>3</span>
+              <button data-ginc aria-label="More surfers">+</button>
+            </div>
+            <p class="hint">Group lessons are for 3 or more surfers — $80 per person.</p>
+          </div>
+          <div>
+            <span class="field-label">Your details</span>
+            <div class="field"><label for="g-name">Name</label><input id="g-name" type="text" placeholder="Your name" required></div>
+            <div class="field"><label for="g-email">Email</label><input id="g-email" type="email" placeholder="you@email.com" required></div>
+            <div class="field"><label for="g-phone">Phone</label><input id="g-phone" type="tel" placeholder="Best number to reach you"></div>
+            <div class="booking-summary">
+              <div class="sum-row"><span>Lesson</span><span class="v">Group Lesson</span></div>
+              <div class="sum-row"><span>Date</span><span class="v" data-gsum-date>Select a date</span></div>
+              <div class="sum-row"><span>Time</span><span class="v" data-gsum-time>Select a time</span></div>
+              <div class="sum-row"><span>Surfers</span><span class="v" data-gsum-surfers>3 × $80</span></div>
+              <div class="sum-total"><span>Total</span><b data-gsum-total>$240</b></div>
+            </div>
+            <button class="btn btn--primary btn--block" data-g-submit disabled style="margin-top:1.2rem">Request Booking</button>
+            <p class="hint">We'll confirm your spot and email you a secure payment link.</p>
+          </div>
+        </div>
+      </div>
+      <div class="confirm-msg" data-g-confirm>
+        <h3 class="serif" style="font-size:1.4rem;margin:0 0 .4rem">Request sent!</h3>
+        <p style="margin:0;color:rgba(250,247,240,.85)">Your email app should have opened with your group request ready to send. Once we receive it, we'll confirm your spot and email you a secure payment link. Prefer to talk? Call <a href="tel:+18582614815" style="border-bottom:1px solid rgba(250,247,240,.5)">858 261 4815</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="assets/js/main.js"></script>
+<script src="assets/js/group-booking.js"></script>
 <script>
   /* Book Now opens the Acuity scheduler in a popup, loaded to that lesson */
   (function () {
