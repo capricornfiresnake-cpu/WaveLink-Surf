@@ -618,6 +618,10 @@ body.header-solid .site-header .icon-btn{color:var(--ink)}
    ===================================================================== */
 .acuity-embed{background:var(--paper);border:1px solid var(--line)}
 .acuity-embed iframe{display:block;width:100%;min-height:820px;border:0}
+/* Acuity scheduler popup */
+.modal__panel--sched{width:min(880px,100%);height:min(900px,90vh);max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+.modal__body--sched{flex:1;padding:0;overflow:hidden;background:var(--paper)}
+.modal__body--sched iframe{width:100%;height:100%;border:0;display:block}
 /* Booking + payment now handled by Acuity; hide the old cart icon & drawer */
 .icon-btn[data-cart-open],.drawer{display:none!important}
 

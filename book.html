@@ -82,7 +82,7 @@
           <p class="lesson__meta">1.5 hours · 1 surfer · 1 instructor</p>
           <p class="lesson__price"><b>$125</b> <span>per surfer</span></p>
           <p class="lesson__blurb">All eyes on you — no group, no waiting your turn. Just focused coaching that gets you further, faster.</p>
-          <div class="lesson__foot"><a class="btn btn--primary btn--block" href="#schedule" data-acuity="https://app.acuityscheduling.com/schedule.php?owner=40083208">Book Now</a></div>
+          <div class="lesson__foot"><button type="button" class="btn btn--primary btn--block" data-acuity="https://app.acuityscheduling.com/schedule.php?owner=40083208">Book Now</button></div>
         </div>
       </article>
       <article class="lesson reveal" data-d="2">
@@ -92,7 +92,7 @@
           <p class="lesson__meta">1.5 hours · 2 surfers · 1 instructor</p>
           <p class="lesson__price"><b>$98</b> <span>per surfer</span></p>
           <p class="lesson__blurb">Share the water with a partner or friend and keep the coaching close, personal, and hands-on.</p>
-          <div class="lesson__foot"><a class="btn btn--primary btn--block" href="#schedule" data-acuity="https://app.acuityscheduling.com/schedule.php?owner=40083208">Book Now</a></div>
+          <div class="lesson__foot"><button type="button" class="btn btn--primary btn--block" data-acuity="https://app.acuityscheduling.com/schedule.php?owner=40083208">Book Now</button></div>
         </div>
       </article>
       <article class="lesson reveal" data-d="3">
@@ -102,26 +102,13 @@
           <p class="lesson__meta">Minimum 3 surfers · 1 coach per 2 surfers</p>
           <p class="lesson__price"><b>$80</b> <span>per person</span></p>
           <p class="lesson__blurb">Family and friends learning together, with a low coach-to-surfer ratio so no one gets lost in the crowd.</p>
-          <div class="lesson__foot"><a class="btn btn--primary btn--block" href="#schedule" data-acuity="https://app.acuityscheduling.com/schedule.php?owner=40083208&amp;appointmentType=category:Group%20Lesson">Book Now</a></div>
+          <div class="lesson__foot"><button type="button" class="btn btn--primary btn--block" data-acuity="https://app.acuityscheduling.com/schedule.php?owner=40083208&amp;appointmentType=category:Group%20Lesson">Book Now</button></div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ACUITY SCHEDULER -->
-<section class="section section--paper" id="schedule">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow eyebrow--center reveal">Reserve Your Session</span>
-      <h2 class="h-section reveal" data-d="1" style="margin-top:1rem">Pick your date &amp; time</h2>
-      <p class="reveal" data-d="2" style="color:var(--ink-70);max-width:44rem;margin:1rem auto 0">Choose your lesson, select an available time, and pay securely to lock it in. Times shown are live availability, so your spot is reserved the moment you book.</p>
-    </div>
-    <div class="acuity-embed reveal">
-      <iframe id="acuity-frame" src="https://app.acuityscheduling.com/schedule.php?owner=40083208" title="Schedule a lesson with Wavelink Surf" width="100%" height="800" frameborder="0"></iframe>
-    </div>
-  </div>
-</section>
 
 <!-- SHARED DESCRIPTION (applies to all three lessons) -->
 <section class="section">
@@ -177,16 +164,38 @@
   </aside>
 </div>
 
+<!-- BOOKING MODAL (Acuity scheduler pops up on Book Now) -->
+<div class="modal" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Book a lesson">
+  <div class="modal__scrim" data-b-close></div>
+  <div class="modal__panel modal__panel--sched">
+    <div class="modal__head">
+      <h3>Pick your date &amp; time</h3>
+      <button class="modal__close" data-b-close aria-label="Close">&times;</button>
+    </div>
+    <div class="modal__body modal__body--sched">
+      <iframe id="acuity-frame" title="Schedule a lesson with Wavelink Surf" frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+
 <script src="assets/js/main.js"></script>
-<script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
 <script>
-  /* Book Now buttons load the matching lesson into the Acuity scheduler */
+  /* Book Now opens the Acuity scheduler in a popup, loaded to that lesson */
   (function () {
+    var modal = document.getElementById("booking-modal");
     var frame = document.getElementById("acuity-frame");
-    if (!frame) return;
+    if (!modal || !frame) return;
+    function openModal(url) {
+      if (frame.getAttribute("data-loaded") !== url) { frame.src = url; frame.setAttribute("data-loaded", url); }
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal() { modal.classList.remove("open"); document.body.style.overflow = ""; }
     document.querySelectorAll("[data-acuity]").forEach(function (b) {
-      b.addEventListener("click", function () { frame.src = b.getAttribute("data-acuity"); });
+      b.addEventListener("click", function () { openModal(b.getAttribute("data-acuity")); });
     });
+    modal.querySelectorAll("[data-b-close]").forEach(function (x) { x.addEventListener("click", closeModal); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
   })();
 </script>
 </body>
