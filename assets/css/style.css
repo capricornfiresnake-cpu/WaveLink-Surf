@@ -15,9 +15,9 @@
   --sea-deep:#24555C;   /* mid ocean */
   --sand:#C4B291;       /* warm sand hairline */
   --sand-deep:#A88F63;
-  --ink-70:rgba(21,50,58,.72);
-  --ink-55:rgba(21,50,58,.55);
-  --ink-40:rgba(21,50,58,.40);
+  --ink-70:rgba(21,50,58,.78);
+  --ink-55:rgba(21,50,58,.64);
+  --ink-40:rgba(21,50,58,.52);
   --line:rgba(21,50,58,.16);
 
   --font-serif:"Bodoni Moda",Georgia,"Times New Roman",serif;
@@ -52,6 +52,16 @@ button{font-family:inherit;cursor:pointer}
 h1,h2,h3,h4{margin:0;font-weight:400;line-height:1.05}
 p{margin:0 0 1.15em}
 ::selection{background:var(--sea);color:var(--paper)}
+
+/* skip to content (accessibility) */
+.skip-link{
+  position:fixed;left:1rem;top:-4rem;z-index:400;
+  background:var(--ink);color:var(--paper);
+  padding:.8rem 1.2rem;border-radius:0;
+  font-family:var(--font-sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
+  transition:top .25s var(--e);
+}
+.skip-link:focus{top:1rem;outline:2px solid var(--sea);outline-offset:2px}
 
 /* ---------- typography helpers ---------- */
 .serif{font-family:var(--font-serif)}
@@ -570,6 +580,20 @@ body.header-solid .site-header .icon-btn{color:var(--ink)}
 .footer-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;
   padding:1.8rem 0;border-top:1px solid rgba(250,247,240,.18);
   font-size:.72rem;letter-spacing:.1em;color:rgba(250,247,240,.6);text-transform:uppercase}
+.footer-legal a{color:rgba(250,247,240,.72);transition:color .3s}
+.footer-legal a:hover{color:var(--paper)}
+
+/* legal pages (privacy / terms) */
+.legal{max-width:72ch}
+.legal .lead{margin:1.4rem 0 2rem;color:var(--ink)}
+.legal h2{margin:2.4rem 0 .7rem;font-size:clamp(1.35rem,2.2vw,1.7rem)}
+.legal p{color:var(--ink-70)}
+.legal__updated{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--ink-55);margin:.6rem 0 0}
+.legal__list{margin:.4rem 0 1.4rem;padding-left:0;list-style:none}
+.legal__list li{position:relative;padding-left:1.5rem;margin-bottom:.6rem;color:var(--ink-70)}
+.legal__list li::before{content:"";position:absolute;left:0;top:.7em;width:.6rem;height:1px;background:var(--sand-deep)}
+.legal__link{border-bottom:1px solid var(--sand-deep);transition:border-color .3s}
+.legal__link:hover{border-color:var(--ink)}
 .footer-brand{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}
 
 /* =====================================================================

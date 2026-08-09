@@ -19,9 +19,10 @@
   var toggle = document.querySelector(".menu-toggle");
   var overlay = document.querySelector(".nav-overlay");
   var closeBtn = document.querySelector(".nav-overlay__close");
-  function openMenu() { overlay.classList.add("open"); document.body.style.overflow = "hidden"; }
-  function closeMenu() { overlay.classList.remove("open"); document.body.style.overflow = ""; }
+  function openMenu() { overlay.classList.add("open"); document.body.style.overflow = "hidden"; if (toggle) toggle.setAttribute("aria-expanded", "true"); }
+  function closeMenu() { overlay.classList.remove("open"); document.body.style.overflow = ""; if (toggle) toggle.setAttribute("aria-expanded", "false"); }
   if (toggle && overlay) {
+    toggle.setAttribute("aria-expanded", "false");
     toggle.addEventListener("click", openMenu);
     if (closeBtn) closeBtn.addEventListener("click", closeMenu);
     overlay.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
