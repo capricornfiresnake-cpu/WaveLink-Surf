@@ -366,7 +366,7 @@ body.header-solid .site-header .icon-btn{color:var(--ink)}
 .lessons{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,2rem)}
 .lesson{
   background:var(--paper);display:flex;flex-direction:column;
-  border:1px solid var(--line);transition:transform .6s var(--e),box-shadow .6s var(--e)}
+  border:1px solid var(--line);transition:transform .6s var(--e),box-shadow .6s var(--e),opacity .9s var(--e)}
 .lesson:hover{transform:translateY(-5px);box-shadow:0 24px 50px -30px rgba(21,50,58,.5)}
 .lesson__media{aspect-ratio:4/3;overflow:hidden}
 .lesson__media img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--e)}
