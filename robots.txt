@@ -3,5 +3,4 @@ Allow: /
 Disallow: /checkout.html
 Disallow: /success.html
 
-# When your custom domain is live, add your sitemap here, e.g.:
-# Sitemap: https://www.yourdomain.com/sitemap.xml
+Sitemap: https://wavelinksurf.com/sitemap.xml
